@@ -100,13 +100,21 @@
     \umlinherit{Cleanroom}{Room}
 
     \umlclass[below = 1cm of Classroom, type=abstract]
-    {AbstractRoomFactory}{}{\umlvirt{+ createRoom() : Room}}
+    {AbstractRoomFactory}{}{
+    \umlvirt{+ createRoom() : Room} \\
+    \# randomBuilding() : string \\
+    \# randomNumber() : string \\
+    \# randomBool() : bool
+    }
     \umlclass[below left = 1cm and 4cm of AbstractRoomFactory.south]
     {LectureHallFactory}{}{+ createRoom() : Room}
     \umlclass[below = 1cm of AbstractRoomFactory.south]
     {ClassroomFactory}{}{+ createRoom() : Room}
     \umlclass[below right = 1cm and 4cm of AbstractRoomFactory.south]
-    {CleanroomFactory}{}{+ createRoom() : Room}
+    {CleanroomFactory}{}{
+    + createRoom() : Room \\
+    \# randomCleanliness() : float
+    }
     \umlinherit{LectureHallFactory}{AbstractRoomFactory}
     \umlinherit{CleanroomFactory}{AbstractRoomFactory}
     \umlinherit{ClassroomFactory}{AbstractRoomFactory}
