@@ -134,31 +134,29 @@
     \# duration : uint \\
     \# place : Room
     }{
-    + Work(time : uint, place : Room) \\
-    \umlvirt{+ perform() : void}
+    + Work(startTime : uint, duration : uint, place : Room)
     }
 
     \umlclass[right = 1cm of Work]{Study}{
-    - eatCheetos : bool}{
+    \# eatCheetos : bool}{
     + Study(startTime : uint, duration : uint, place : Room, 
-    eatCheetos : bool) \\
-    + perform() : void
+    eatCheetos : bool)
     }
 
     \umlclass[below left = 2cm and 1cm of Work.south]{Research}{
-    - writePaper : bool
+    \# writePaper : bool
     }{
     + Research(startTime : uint, duration : uint, place : Room, 
-    writePaper : bool) \\
-    + perform() : void
+    writePaper : bool)
     }
 
     \umlclass[below right = 2cm and 1cm of Work.south]{DidacticWork}{
-    - surpriseTest : bool
+    \# checkAttendance : bool \\
+    \# students : Student[0..*] 
     }{
     + DidacticWork(startTime : uint, duration : uint, place : Room, 
-    surpriseTest : bool) \\
-    + perform() : void
+    checkAttendance : bool) \\
+    + setStudents(students : Student[0..*])
     }
 
     \umlinherit{Study}{Work}
