@@ -1,0 +1,27 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{tikz-uml}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{tikzpicture}
+    \umlactor{Person}
+    \umlactor[y=-3]{Academic}
+    \umlinherit{Academic}{Person}
+    \umlactor[right = 2 cm of Person]{Student}
+    \umlinherit{Student}{Person}
+
+    \umlusecase[x=3, y=-2, name=work]{Work}
+    \umlusecase[below = 1.5 cm of work, name=didactic]
+    {Didactic work}
+    \umlextend{work}{didactic}
+    \umlassoc{Academic}{didactic}
+
+    \umlusecase[right = 1 cm of didactic, name=research]{Research}
+    \umlextend{work}{research}
+    \umlassoc{Academic}{research}
+
+    \umlusecase[right = 2cm of work, name=study]{Study}
+    \umlextend{work}{study}
+    \umlassoc{Student}{study}
+\end{tikzpicture}
+\end{document}

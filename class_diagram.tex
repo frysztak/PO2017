@@ -1,0 +1,177 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{tikz-uml}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{tikzpicture}
+    \umlclass[type=abstract]{Person}{
+    - name : string \\
+    - age : uint \\
+    - gender : Gender \\
+    - work : Work[1..*]
+    }{
+    + Person() \\
+    + Person(name : string, age : uint, gender : Gender) \\
+    \umlvirt{+ getInfo() : string} \\
+    \umlvirt{+ doWork() : void}
+    }
+
+    \umlenum[left = 1cm of Person]{Gender}{Female \\ Male \\ Other}{}
+    \umlenum[left = 1cm of Gender]{AcademicTitle}
+    {Bachelor \\ Master \\ PhD \\ Professor}{}
+
+    \umlclass[below left = 1cm and 0.3cm of Person.south]{Academic}{
+    - title : AcademicTitle
+    }{
+    + Academic(name : string, age : uint, gender : Gender, 
+    title : AcademicTitle) \\
+    + getInfo() : string \\
+    + doWork() : void
+    }
+    \umlclass[below right = 1cm and 0.3cm of Person.south]{Student}{
+    - semester : uint
+    }{
+    + Student(name : string, age : uint, gender : Gender, 
+    semester : uint) \\
+    + getInfo() : string \\
+    + doWork() : void
+    }
+    \umlinherit{Academic}{Person}
+    \umlinherit{Student}{Person}
+
+    \umlclass[below = 5cm of Person, type=abstract]
+    {AbstractPeopleFactory}{}{\umlvirt{+ createPerson() : Person}}
+    \umlclass[below left = 1cm and 1cm of AbstractPeopleFactory.south]
+    {AcademicFactory}{}{+ createPerson() : Academic}
+    \umlclass[below right = 1cm and 1cm of AbstractPeopleFactory.south]
+    {StudentFactory}{}{+ createPerson() : Student}
+    \umlinherit{AcademicFactory}{AbstractPeopleFactory}
+    \umlinherit{StudentFactory}{AbstractPeopleFactory}
+    \umldep{AcademicFactory}{Academic}
+    \umldep{StudentFactory}{Student}
+    \umlclass[below = 4cm of AbstractPeopleFactory]{PeopleFactory}
+    {}{\umlstatic{
+    + getFactory(type : string) : AbstractPeopleFactory}}
+    \umldep{PeopleFactory}{AcademicFactory}
+    \umldep{PeopleFactory}{StudentFactory}
+
+
+    \umlclass[below = 2cm of PeopleFactory, type=abstract]{Room}{
+    - number : string \\
+    - building : string \\
+    }{
+    + Room(number : string, building : string) \\
+    \umlvirt{+ getInfo() : string}
+    }
+
+    \umlclass[below left = 1cm and 1.5cm of Room.south]{LectureHall}{
+    - hasAC : bool
+    }{
+    + LectureHall(number : string, building : string, hasAC : bool) \\
+    + getInfo() : string
+    }
+    \umlclass[below = 4cm of Room.south]{Classroom}{
+    - areSeatsComfortable : bool
+    }{
+    + Classroom(number : string, building : string, 
+    areSeatsComfortable : bool) \\
+    + getInfo() : string
+    }
+    \umlclass[below right = 1cm and 1.5cm of Room.south]{Cleanroom}{
+    - cleanliness : float
+    }{
+    + Cleanroom(number : string, building : string, 
+    cleanliness : float) \\
+    + getInfo() : string
+    }
+    \umlinherit{LectureHall}{Room}
+    \umlinherit{Classroom}{Room}
+    \umlinherit{Cleanroom}{Room}
+
+    \umlclass[below = 1cm of Classroom, type=abstract]
+    {AbstractRoomFactory}{}{\umlvirt{+ createRoom() : Room}}
+    \umlclass[below left = 1cm and 4cm of AbstractRoomFactory.south]
+    {LectureHallFactory}{}{+ createRoom() : Room}
+    \umlclass[below = 1cm of AbstractRoomFactory.south]
+    {ClassroomFactory}{}{+ createRoom() : Room}
+    \umlclass[below right = 1cm and 4cm of AbstractRoomFactory.south]
+    {CleanroomFactory}{}{+ createRoom() : Room}
+    \umlinherit{LectureHallFactory}{AbstractRoomFactory}
+    \umlinherit{CleanroomFactory}{AbstractRoomFactory}
+    \umlinherit{ClassroomFactory}{AbstractRoomFactory}
+    \umldep{LectureHallFactory}{LectureHall}
+    \umldep{CleanroomFactory}{Cleanroom}
+    \umlHVHdep[arm1=0.5cm]{ClassroomFactory.east}{Classroom.south}
+    \umlclass[below = 4cm of AbstractRoomFactory]{RoomFactory}
+    {}{\umlstatic{
+    + getFactory(type : string) : AbstractRoomFactory}}
+    \umldep{RoomFactory}{LectureHallFactory}
+    \umldep{RoomFactory}{CleanroomFactory}
+    \umldep{RoomFactory}{ClassroomFactory}
+
+
+    \umlclass[right = 18 cm of Person, type=abstract]{Work}{
+    - startTime : uint \\
+    - duration : uint \\
+    - place : Room
+    }{
+    + Work(time : uint, place : Room) \\
+    \umlvirt{+ perform() : void}
+    }
+
+    \umlclass[right = 1cm of Work]{Study}{
+    - eatCheetos : bool}{
+    + Study(startTime : uint, duration : uint, place : Room, 
+    eatCheetos : bool) \\
+    + perform() : void
+    }
+
+    \umlclass[below left = 2cm and 1cm of Work.south]{Research}{
+    - writePaper : bool
+    }{
+    + Research(startTime : uint, duration : uint, place : Room, 
+    writePaper : bool) \\
+    + perform() : void
+    }
+
+    \umlclass[below right = 2cm and 1cm of Work.south]{DidacticWork}{
+    - surpriseTest : bool
+    }{
+    + DidacticWork(startTime : uint, duration : uint, place : Room, 
+    surpriseTest : bool) \\
+    + perform() : void
+    }
+
+    \umlinherit{Study}{Work}
+    \umlinherit{Research}{Work}
+    \umlinherit{DidacticWork}{Work}
+
+    \umlcompo[mult=1..*]{Person}{Work}
+    \umlaggreg[mult=1]{Person}{Gender}
+    \umlaggreg[mult=1]{Academic}{AcademicTitle}
+
+    \umlclass[below = 5cm of Work, type=abstract]
+    {AbstractWorkFactory}{}{\umlvirt{+ createWork() : Work}}
+    \umlclass[below left = 1cm and 4cm of AbstractWorkFactory.south]
+    {ResearchWorkFactory}{}{+ createWork() : Work}
+    \umlclass[below = 1cm of AbstractWorkFactory.south]
+    {DidacticWorkFactory}{}{+ createWork() : Work}
+    \umlclass[below right = 1cm and 4cm of AbstractWorkFactory.south]
+    {StudyWorkFactory}{}{+ createWork() : Work}
+    \umlinherit{ResearchWorkFactory}{AbstractWorkFactory}
+    \umlinherit{DidacticWorkFactory}{AbstractWorkFactory}
+    \umlinherit{StudyWorkFactory}{AbstractWorkFactory}
+    \umldep{ResearchWorkFactory}{Research}
+    \umldep{DidacticWorkFactory}{DidacticWork}
+    \umlHVHdep[arm1=6.5cm]{StudyWorkFactory.east}{Study.south}
+    \umlclass[below = 4cm of AbstractWorkFactory]{WorkFactory}
+    {}{\umlstatic{
+    + getFactory(type : string) : AbstractWorkFactory}}
+    \umldep{WorkFactory}{ResearchWorkFactory}
+    \umldep{WorkFactory}{DidacticWorkFactory}
+    \umldep{WorkFactory}{StudyWorkFactory}
+
+    \umlHVHaggreg[mult=1, anchors = 160 and 30]{Work}{Room}
+
+\end{tikzpicture}
+\end{document}
