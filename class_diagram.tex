@@ -5,10 +5,10 @@
 \begin{document}
 \begin{tikzpicture}
     \umlclass[type=abstract]{Person}{
-    - name : string \\
-    - age : uint \\
-    - gender : Gender \\
-    - work : Work[1..*]
+    \# name : string \\
+    \# age : uint \\
+    \# gender : Gender \\
+    \# work : Work[1..*]
     }{
     + Person() \\
     + Person(name : string, age : uint, gender : Gender) \\
@@ -57,8 +57,8 @@
 
 
     \umlclass[below = 2cm of PeopleFactory, type=abstract]{Room}{
-    - number : string \\
-    - building : string \\
+    \# number : string \\
+    \# building : string \\
     }{
     + Room(number : string, building : string) \\
     \umlvirt{+ getInfo() : string}
@@ -111,9 +111,9 @@
 
 
     \umlclass[right = 18 cm of Person, type=abstract]{Work}{
-    - startTime : uint \\
-    - duration : uint \\
-    - place : Room
+    \# startTime : uint \\
+    \# duration : uint \\
+    \# place : Room
     }{
     + Work(time : uint, place : Room) \\
     \umlvirt{+ perform() : void}

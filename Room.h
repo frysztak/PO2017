@@ -5,7 +5,7 @@
 
 class Room
 {
-    private:
+    protected:
         std::string number;
         std::string building;
 

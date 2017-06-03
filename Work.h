@@ -5,7 +5,7 @@
 
 class Work
 {
-    private:
+    protected:
         uint32_t startTime;
         uint32_t duration;
         Room* place;
