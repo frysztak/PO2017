@@ -1,25 +1,3 @@
 # PO2017
 
-Przykładowe tematy projektów:
-A. stacja pogodowa z możliwością wysyłania powiadomień o zagrożeniach SMSem, 
-   z interfejsem pozwalającym na integrację z systemem ogrzewania budynku,
-   wyświetlacze i sterownik pozwalający sprawdzić minimalne, maksymalne, średnie 
-   mierzone wartości, możliwość narysowania wykresu zmian temperatury w ostatnim
-   miesiącu, tygodniu, dniu lub innym okresie. 
-   Możliwość sprawdzenia wybranych wartości w różnych miejscach (strona południowa, 
-   strona zachodnia, garaż, pokój dzienny)
-
-B. centralka alarmowa z możliwością powiadamiania SMSem lub innymi drogami o wybranej klasie zdarzeń. 
-   Możliwość szybkiego dodawania gości z mniejszymi uprawnieniami. Rejestracja dziennika aktywności
-   (otwarcia okien, drzwi, uzbrajanie lub rozbrajanie alarmu, wykrycie obecności w strefach.
-   Obsługa stref (w nocy alarm się włączy, gdy pojawi się intruz na parterze, ale alarm nie aktywuje 
-   się kiedy zostaną wykryci domownicy na piętrze) 
-
-C. smartwatch + smartphone. Diagramy UML: przypadków użycia, aktywności, interakcji oraz klas. 
-   Obie aplikacje mogą być zrealizowane w C#, przy czym nie chodzi o wykonanie emulatora zegarka 
-   czy telefonu, ale o demonstrację np. przejść między stanami, np. guzik "połączenie przychodzące" 
-   kliknięty w aplikacji "telefon" wyświetli komunikat z informacją o tym połączeniu w aplikacji "zegarek".
-   Należy przewidzieć pewne kolekcje danych (lista kontaktów, dziennik połączeń, dzienniki aktywności 
-   użytkownika), które to dane będą wymieniane między obiema aplikacjami
-
-D. Wasze pomysły na projekty, mogą to być luźne propozycje.
+A Day in The Life of an Academic 
