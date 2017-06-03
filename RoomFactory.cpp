@@ -1,4 +1,6 @@
 #include <random>
+#include <sstream>
+#include <iomanip>
 #include "RoomFactory.h"
 
 const std::vector<std::string> AbstractRoomFactory::knownBuildings = 
@@ -17,6 +19,17 @@ std::string AbstractRoomFactory::randomBuilding()
 
 std::string AbstractRoomFactory::randomNumber()
 {
+    std::random_device random_device;
+	std::mt19937 engine{random_device()};
+	std::uniform_int_distribution<int> dist(0, 3);
+    auto floor = dist(engine);
+    dist = std::uniform_int_distribution<int>(1, 20);
+    auto room = dist(engine);
+
+    std::stringstream ss;
+    ss << floor;
+    ss << std::setfill('0') << std::setw(2) << room;
+    return ss.str();
 }
 
 bool AbstractRoomFactory::randomBool()
