@@ -22,6 +22,13 @@ enum class Gender
     Other
 };
 
+class EnumToString
+{
+    public:
+        static std::string GenderToString(Gender);
+        static std::string AcademicTitleToString(AcademicTitle);
+};
+
 class Person
 {
     protected:
