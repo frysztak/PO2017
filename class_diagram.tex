@@ -40,11 +40,22 @@
     \umlinherit{Student}{Person}
 
     \umlclass[below = 5cm of Person, type=abstract]
-    {AbstractPeopleFactory}{}{\umlvirt{+ createPerson() : Person}}
+    {AbstractPeopleFactory}{}{
+    \umlvirt{+ createPerson() : Person} \\
+    \# randomGender() : Gender \\
+    \# randomName(g : Gender) : string \\
+    \# randomAge() : uint
+    }
     \umlclass[below left = 1cm and 1cm of AbstractPeopleFactory.south]
-    {AcademicFactory}{}{+ createPerson() : Academic}
+    {AcademicFactory}{}{
+    + createPerson() : Person \\
+    - randomAcademicTitle() : AcademicTitle
+    }
     \umlclass[below right = 1cm and 1cm of AbstractPeopleFactory.south]
-    {StudentFactory}{}{+ createPerson() : Student}
+    {StudentFactory}{}{
+    + createPerson() : Person \\
+    - randomSemester() : uint
+    }
     \umlinherit{AcademicFactory}{AbstractPeopleFactory}
     \umlinherit{StudentFactory}{AbstractPeopleFactory}
     \umldep{AcademicFactory}{Academic}
