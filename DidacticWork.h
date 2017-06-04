@@ -16,6 +16,7 @@ class DidacticWork : public Work
                    bool checkAttendance);
         std::string getInfo();
         void setStudents(std::vector<Student*>&);
+        const std::vector<Student*>& getStudents();
 };
 
 #endif

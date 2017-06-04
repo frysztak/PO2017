@@ -158,7 +158,8 @@
     }{
     + DidacticWork(startTime : uint, duration : uint, place : Room, 
     checkAttendance : bool) \\
-    + setStudents(students : Student[0..*])
+    + setStudents(students : Student[0..*]) : void \\
+    + getStudents() : Student[0..*]
     }
 
     \umlinherit{Study}{Work}
@@ -169,7 +170,7 @@
     \umlaggreg[mult=1]{Person}{Gender}
     \umlaggreg[mult=1]{Academic}{AcademicTitle}
 
-    \umlclass[below = 5cm of Work, type=abstract]
+    \umlclass[below = 6cm of Work, type=abstract]
     {AbstractWorkFactory}{}{\umlvirt{+ createWork() : Work}}
     \umlclass[below left = 1cm and 4cm of AbstractWorkFactory.south]
     {ResearchWorkFactory}{}{+ createWork() : Work}

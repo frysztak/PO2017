@@ -24,3 +24,8 @@ void DidacticWork::setStudents(std::vector<Student*>& students)
     this->students.clear();
     this->students = students;
 }
+
+const std::vector<Student*>& DidacticWork::getStudents()
+{
+    return students;
+}
