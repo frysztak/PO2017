@@ -8,12 +8,16 @@
     \# name : string \\
     \# age : uint \\
     \# gender : Gender \\
-    \# work : Work[1..*]
+    \# work : Work[0..*]
     }{
     + Person() \\
     + Person(name : string, age : uint, gender : Gender) \\
     \umlvirt{+ getInfo() : string} \\
-    \umlvirt{+ doWork() : void}
+    + addWork(work : Work[0..*]) : void \\
+    + removeWork(count : uint) : void \\
+    + nextWorkItem() : Work \\
+    + hasMoreWork() : bool \\
+    + doWork() : void
     }
 
     \umlenum[left = 1cm of Person]{Gender}{Female \\ Male \\ Other}{}
@@ -25,16 +29,14 @@
     }{
     + Academic(name : string, age : uint, gender : Gender, 
     title : AcademicTitle) \\
-    + getInfo() : string \\
-    + doWork() : void
+    + getInfo() : string
     }
     \umlclass[below right = 1cm and 0.3cm of Person.south]{Student}{
     - semester : uint
     }{
     + Student(name : string, age : uint, gender : Gender, 
     semester : uint) \\
-    + getInfo() : string \\
-    + doWork() : void
+    + getInfo() : string
     }
     \umlinherit{Academic}{Person}
     \umlinherit{Student}{Person}

@@ -35,14 +35,19 @@ class Person
         std::string name;
         uint32_t age;
         Gender gender;
-        std::vector<std::unique_ptr<Work>> work;
+        std::vector<Work*> work;
 
     public:
         Person();
         Person(std::string name, uint32_t age, Gender gender);
         
         virtual std::string getInfo() = 0;
-        virtual void doWork() = 0;
+
+        void addWork(std::vector<Work*>&);
+        void removeWork(size_t);
+        Work* nextWorkItem();
+        bool hasMoreWork();
+        void doWork();
 };
 
 #endif
