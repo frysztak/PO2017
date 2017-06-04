@@ -7,21 +7,19 @@
     \umlactor{Person}
     \umlactor[y=-3]{Academic}
     \umlinherit{Academic}{Person}
-    \umlactor[right = 2 cm of Person]{Student}
+    \umlactor[y=-4, x=-2]{Student}
     \umlinherit{Student}{Person}
 
     \umlusecase[x=3, y=-2, name=work]{Work}
     \umlusecase[below = 1.5 cm of work, name=didactic]
     {Didactic work}
     \umlextend{work}{didactic}
-    \umlassoc{Academic}{didactic}
 
     \umlusecase[right = 1 cm of didactic, name=research]{Research}
     \umlextend{work}{research}
-    \umlassoc{Academic}{research}
 
-    \umlusecase[right = 2cm of work, name=study]{Study}
-    \umlextend{work}{study}
-    \umlassoc{Student}{study}
+    \umlassoc{Academic}{work}
+    \umlassoc{Student}{didactic}
+
 \end{tikzpicture}
 \end{document}
