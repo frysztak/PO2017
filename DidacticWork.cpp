@@ -12,9 +12,10 @@ std::string DidacticWork::getInfo()
     std::stringstream ss;
     std::string attendance = checkAttendance ? 
         "and checking attendance " : "";
-    ss << "doing didactic work " << attendance << "with ";
-    ss << students.size();
-    ss << " in " << place->getInfo() << std::endl;
+    ss << "didactic work " << attendance;
+    ss << "at " << startTime << " for " << duration << " hours";
+    ss << " with " << students.size() << " students";
+    ss << " in " << place->getInfo();
 
     return ss.str();
 }

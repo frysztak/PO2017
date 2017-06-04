@@ -11,8 +11,9 @@ std::string Research::getInfo()
 {
     std::stringstream ss;
     std::string paper = writePaper ? " and writing paper" : "";
-    ss << "doing research" << paper << "in " << place->getInfo();
-    ss << std::endl;
+    ss << "research" << paper;
+    ss << " at " << startTime << " for " << duration << " hours";
+    ss <<" in " << place->getInfo();
 
     return ss.str();
 }
