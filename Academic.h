@@ -13,7 +13,6 @@ class Academic : public Person
                 AcademicTitle title);
 
         std::string getInfo();
-        void doWork();
 };
 
 #endif

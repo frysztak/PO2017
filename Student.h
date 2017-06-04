@@ -13,7 +13,6 @@ class Student : public Person
                 uint32_t semester);
 
         std::string getInfo();
-        void doWork();
 };
 
 #endif

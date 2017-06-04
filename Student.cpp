@@ -17,8 +17,3 @@ std::string Student::getInfo()
 
     return ss.str();
 }
-
-void Student::doWork()
-{
-    // accurate depiction of every student
-}

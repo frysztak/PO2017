@@ -18,7 +18,3 @@ std::string Academic::getInfo()
 
     return ss.str();
 }
-
-void Academic::doWork()
-{
-}
