@@ -8,3 +8,13 @@ Work::Work(uint32_t startTime, uint32_t duration, Room* place) :
     startTime(startTime), duration(duration), place(place)
 {
 }
+
+uint32_t Work::getStartTime()
+{
+    return this->startTime;
+}
+
+uint32_t Work::getDuration()
+{
+    return this->duration;
+}
