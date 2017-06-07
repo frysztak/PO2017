@@ -40,6 +40,10 @@ Person::Person(std::string name, uint32_t age, Gender gender) :
 {
 }
 
+Person::~Person()
+{
+}
+
 void Person::addWork(std::vector<Work*>& w)
 {
     this->work.insert(this->work.end(), w.begin(), w.end());
@@ -47,8 +51,6 @@ void Person::addWork(std::vector<Work*>& w)
 
 void Person::removeWork(size_t n)
 {
-    std::for_each(work.begin(), work.begin() + n,
-    [](Work* w) { delete w; });
     this->work.erase(this->work.begin(), this->work.begin() + n);
 }
 

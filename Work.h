@@ -13,6 +13,7 @@ class Work
     public:
         Work();
         Work(uint32_t startTime, uint32_t duration, Room* place);
+        virtual ~Work();
 
         virtual std::string getInfo() = 0;
 

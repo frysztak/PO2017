@@ -40,6 +40,7 @@ class Person
     public:
         Person();
         Person(std::string name, uint32_t age, Gender gender);
+        virtual ~Person();
         
         virtual std::string getInfo() = 0;
 

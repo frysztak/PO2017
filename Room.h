@@ -12,6 +12,7 @@ class Room
     public:
         Room();
         Room(std::string number, std::string building);
+        virtual ~Room();
 
         virtual std::string getInfo() = 0;
 };

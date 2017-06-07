@@ -9,6 +9,10 @@ Work::Work(uint32_t startTime, uint32_t duration, Room* place) :
 {
 }
 
+Work::~Work()
+{
+}
+
 uint32_t Work::getStartTime()
 {
     return this->startTime;
