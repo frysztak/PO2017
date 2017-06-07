@@ -113,7 +113,15 @@ int main(int argc, char** argv)
 
             std::cout << std::endl;
         }
+
+        for(auto& w: work)
+            delete w;
     }
+
+    for(auto& s: students)
+        delete s;
+    for(auto& r: rooms)
+        delete r;
 
     return 0;
 }
